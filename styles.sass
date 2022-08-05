@@ -8,10 +8,12 @@
     //////// VARIABLES ////////
         //// Colours ////
         //// Fonts ////
-        //// Text-sizing ////
+        //// Screen Sizing ////
+        //// Text Sizing ////
 
     //////// STYLING ////////
         //// Body Styling ////
+        //// Component Styling ////
         //// Main Content Styling ////
         //// Navbar Styling ////
         //// Text Styling ////
@@ -29,9 +31,20 @@
 //// Calculate Rem ////
 // Takes pixel value and returns rem value
 @function calculateRem($px)
-  $rem: $px / 16
-  @return #{$rem}rem
+    $rem: calc($px / 16)
+    @return #{$rem}rem
 
+// Calculate clamp with preferred value for breakpoints
+@function clamped($min-size, $max-size)
+    $max-size: $max-size / 16
+    $min-size: $min-size / 16
+    $max-width: 120
+    $min-width: 23.4375
+    $slope: ($max-size - $min-size) / ($max-width - $min-width)
+    $y-axis-intersection: -$min-width * $slope + $min-size
+    $preferred-value: calc(#{$y-axis-intersection}rem + #{($slope * 100)}vw)
+    $return-value: clamp(#{$min-size}rem, #{$preferred-value}, #{$max-size}rem)
+    @return $return-value
 
 //////// VARIABLES ////////
 
@@ -45,19 +58,23 @@ $h-large-font: 'Bellefair', serif
 $h-sub-font: 'Barlow Condensed', sans-serif
 $body-font: 'Barlow', sans-serif
 
-//// Text-sizing ////
-$h1-size: calculateRem(150)
-$h2-size: calculateRem(100)
-$h3-size: calculateRem(56)
-$h4-size: calculateRem(32)
-$h5-size: calculateRem(28)
+//// Screen Sizing /////
+$tablet: 56.25em
+$mobile: 40.625em
+
+//// Text Sizing ////
+$h1-size: clamped(80, 150)
+$h2-size: clamped(56, 100)
+$h3-size: clamped(24, 56)
+$h4-size: clamped(20, 32)
+$h5-size: clamped(16, 28)
 $h5-spacing: calculateRem(4.75)
 $sub1-size: calculateRem(28)
 $sub2-size: calculateRem(14)
 $sub2-spacing: calculateRem(2.35)
-$nav-size: calculateRem(16)
+$nav-size: clamped(14, 16)
 $nav-spacing: calculateRem(2.7)
-$body-size: calculateRem(18)
+$body-size: clamped(15, 18)
 
 //////// STYLING ////////
 
@@ -73,21 +90,74 @@ body
     height: 100vh
     max-height: 100%
     max-width: 100%
+    overflow: hidden
     width: 100vw
+
+// No transition on page load
+.preload
+    *
+        transition: none !important
+
+//// Component Styling /////
+.explore
+    align-items: center
+    align-self: flex-end
+    aspect-ratio: 1 / 1
+    background-color: $white-color
+    border-radius: 50%
+    display: flex
+    justify-content: center
+    max-width: calculateRem(274)
+    position: relative
+    text-decoration: none
+    width: 50vw
+    &::after
+        background-color: rgba($white-color, 0.1)
+        border-radius: 50%
+        content: ''
+        height: 100%
+        position: absolute
+        transition: all 0.5s
+        width: 100%
+        z-index: -1
+    &:hover
+        &::after
+            transform: scale(1.5)
+    h4
+        color: $background-color
+
+@media only screen and (max-width: $tablet)
+    .explore
+        align-self: center
+    
 
 //// Main Content Styling ////
 main
     align-items: flex-end
     display: flex
     height: 100%
-    padding: 10%
     section
         align-items: center
         display: flex
         flex-direction: column
+        margin: 10%
         width: 50%
         article
             max-width: calculateRem(450)
+
+@media only screen and (max-width: $tablet)
+    main
+        align-items: center
+        flex-direction: column
+        section
+            width: 100%
+            article
+                text-align: center
+    
+@media only screen and (max-width: $mobile)
+    main
+        section
+            padding: 0 10%
 
 //// Navbar Styling ////
 nav
@@ -96,6 +166,8 @@ nav
     justify-content: space-between
     margin: calculateRem(40) 0
     position: relative
+    .burger
+        display: none
     &::before
         background-color: rgba($white-color, 0.25)
         content: ''
@@ -104,15 +176,18 @@ nav
         position: absolute
         top: 50%
         right: calculateRem(700)
+        z-index: 2
     img
         margin: 0 calculateRem(55)
         height: calculateRem(48)
         width: calculateRem(48)
     ul
         background-color: rgba($white-color, 0.04)
+        backdrop-filter: blur(calculateRem(5))
         display: flex
         height: calculateRem(96)
         padding: 0 calculateRem(124)
+        transform-origin: top
         li
             height: 100%
             margin: 0 calculateRem(11)
@@ -131,6 +206,48 @@ nav
                 strong
                     margin-right: calculateRem(11)
 
+@media only screen and (max-width: $tablet) 
+    nav
+        margin-top: 0 
+        &::before
+            display: none
+        ul
+            padding: 0 5vw
+            li
+                margin: 0 1vw
+                a
+                    strong
+                        margin-right: 1vw
+
+@media only screen and (max-width: $mobile)
+    nav
+        margin-top: calculateRem(33)
+        .burger
+            background-color: transparent
+            background-image: url(assets/shared/icon-hamburger.svg)
+            background-repeat: no-repeat
+            background-size: cover
+            border: none
+            display: inline-block
+            height: calculateRem(40)
+            margin-right: 11vw
+            width: calculateRem(40)
+            &:hover
+                cursor: pointer
+                opacity: 70%
+        ul
+            flex-direction: column
+            height: auto
+            padding: 5vw
+            position: absolute
+            right: 0
+            top: 100%
+            transition: all 0.5s
+            transform: scaleY(0)
+            li
+                margin: 1vw
+            &.active
+                transform: scaleY(1)
 //// Text Styling ////
 
 // Init Text //
@@ -151,6 +268,7 @@ strong
 
 // Body //
 .body-text
+    color: $blue-color
     font-family: $body-font
     font-size: $body-size
     text-transform: initial
