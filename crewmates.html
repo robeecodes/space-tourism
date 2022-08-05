@@ -16,23 +16,23 @@
 
     <style>
       body {
-        background-image: url(assets/home/background-home-desktop.jpg);
+        background-image: url(assets/crew/background-crew-desktop.jpg);
         background-repeat: no-repeat;
         background-size: cover;
       }
       @media only screen and (max-width: 56.25em) {
         body {
-          background-image: url(assets/home/background-home-tablet.jpg);
+          background-image: url(assets/crew/background-crew-tablet.jpg);
         }
       }
       @media only screen and (max-width: 40.625em) {
         body {
-          background-image: url(assets/home/background-home-mobile.jpg);
+          background-image: url(assets/crew/background-crew-mobile.jpg);
         }
       }
     </style>
 
-    <title>Home | Space tourism website</title>
+    <title>Crewmates | Space tourism website</title>
   </head>
   <body class="preload">
     <header>
@@ -41,13 +41,13 @@
         <button class="burger"></button>
         <ul>
           <li>
-            <a href="index.html" class="active"><strong>00</strong> Home</a>
+            <a href="index.html"><strong>00</strong> Home</a>
           </li>
           <li>
             <a href="destinations.html"><strong>01</strong> Destination</a>
           </li>
           <li>
-            <a href="crewmates.html"><strong>02</strong> Crew</a>
+            <a href="crewmates.html" class="active"><strong>02</strong> Crew</a>
           </li>
           <li>
             <a href="technologies.html"><strong>03</strong> Technology</a>
@@ -55,23 +55,34 @@
         </ul>
       </nav>
     </header>
-    <main class="home">
-      <section>
+    <main class="crew">
+      <section class="info-card">
         <article>
-          <h5>So, you want to travel to</h5>
-          <h1>Space</h1>
-          <p class="body-text">
-            Let’s face it; if you want to go to space, you might as well
-            genuinely go to outer space and not hover kind of on the edge of it.
-            Well sit back, and relax because we’ll give you a truly out of this
-            world experience!
+          <h5><strong>02</strong>Meet your crew</h5>
+          <h4 id="title">Mission Specialist</h4>
+          <h3 id="name">MARK SHUTTLEWORTH</h3>
+          <p id="desc" class="body-text">
+            Mark Richard Shuttleworth is the founder and CEO of Canonical, the
+            company behind the Linux-based Ubuntu operating system. Shuttleworth
+            became the first South African to travel to space as a space
+            tourist.
           </p>
         </article>
+        <div class="switches">
+          <ul>
+            <li><a>1</a></li>
+            <li><a>2</a></li>
+            <li><a>3</a></li>
+            <li><a>4</a></li>
+          </ul>
+        </div>
       </section>
-      <section>
-        <a class="explore" href="index.html"><h4>Explore</h4></a>
+      <section class="info-card crewmate">
+        <h5><strong>02</strong>Meet your crew</h5>
+        <img id="image" src="" alt="" />
       </section>
     </main>
     <script src="script.js"></script>
+    <script src="crewmates.js"></script>
   </body>
 </html>

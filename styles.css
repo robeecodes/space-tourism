@@ -56,6 +56,32 @@ body {
   margin-right: 2vw;
 }
 
+.switches {
+  align-self: start;
+  margin-top: 20%;
+}
+.switches ul {
+  display: flex;
+  justify-content: space-between;
+  width: 8.25rem;
+}
+.switches ul li {
+  background-color: rgba(255, 255, 255, 0.17);
+  border-radius: 50%;
+  height: 0.9375rem;
+  width: 0.9375rem;
+}
+.switches ul li:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.switches ul li.active {
+  background-color: white;
+}
+.switches ul li a {
+  color: transparent;
+}
+
 .tabs {
   align-self: start;
   height: 2.125rem;
@@ -88,11 +114,14 @@ body {
 }
 
 @media only screen and (max-width: 56.25em) {
-  .explore, .tabs {
+  .explore, .tabs, .switches {
     align-self: center;
   }
   .stats {
     justify-content: center;
+  }
+  .switches {
+    margin-top: 10%;
   }
   .tabs {
     margin-top: 0;
@@ -112,7 +141,28 @@ main {
 }
 main.home {
   align-items: flex-end;
+}
+main.home, main.crew {
   height: 100%;
+}
+main.crew {
+  justify-content: flex-start;
+}
+main.crew section {
+  width: auto;
+}
+main.crew section article {
+  max-width: initial;
+}
+main.crew section article h4 {
+  opacity: 0.5;
+  margin-top: 10%;
+}
+main.crew section article h3 {
+  margin-bottom: 5%;
+}
+main.crew section article p {
+  max-width: 28.125rem;
 }
 main section {
   align-items: center;
@@ -135,6 +185,18 @@ main section.info-card h5 strong {
 main section.info-card .planet {
   max-width: 27.8125rem;
   width: 40vw;
+}
+main section.crewmate {
+  align-self: flex-end;
+  align-items: flex-start;
+  height: 100%;
+  margin: 0;
+}
+main section.crewmate img {
+  height: 100%;
+}
+main section.crewmate h5 {
+  display: none;
 }
 main section article {
   align-self: flex-start;
@@ -168,10 +230,65 @@ main section article hr {
     align-self: center;
     text-align: center;
   }
+  main.crew, main.home.crew {
+    justify-content: flex-start;
+  }
+  main.crew section, main.home.crew section {
+    padding: 10%;
+    width: 100%;
+  }
+  main.crew section h5, main.home.crew section h5 {
+    align-self: flex-start;
+    margin: 0;
+  }
+  main.crew section article h4, main.home.crew section article h4 {
+    margin-top: 5%;
+  }
+  main.crew section article h3, main.home.crew section article h3 {
+    margin-bottom: 2%;
+  }
+  main.crew section article p, main.home.crew section article p {
+    max-width: initial;
+  }
+  main.crew section.info-card, main.home.crew section.info-card {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+  main.crew section.info-card.crewmate, main.home.crew section.info-card.crewmate {
+    align-self: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
 }
 @media only screen and (max-width: 40.625em) {
   main section {
     padding: 0 10%;
+  }
+  main.crew {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+  }
+  main.crew section.info-card {
+    flex-direction: column-reverse;
+    margin-top: 0;
+  }
+  main.crew section.info-card h5 {
+    display: none;
+  }
+  main.crew section.info-card.crewmate {
+    border-bottom: rgba(255, 255, 255, 0.2) 0.0625rem solid;
+    flex-direction: column;
+    height: auto;
+    width: 70%;
+  }
+  main.crew section.info-card.crewmate img {
+    max-height: 13.9375rem;
+  }
+  main.crew section.info-card.crewmate h5 {
+    align-self: center;
+    display: block;
+    margin-bottom: 10%;
   }
 }
 nav {

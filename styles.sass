@@ -132,6 +132,26 @@ body
     div
         margin-right: 2vw
 
+.switches
+    align-self: start
+    margin-top: 20%
+    ul
+        display: flex
+        justify-content: space-between
+        width: calculateRem(132)
+        li
+            background-color: rgba($white-color, 0.17)
+            border-radius: 50%
+            height: calculateRem(15)
+            width: calculateRem(15)
+            &:hover
+                background-color: rgba($white-color, 0.5)
+                cursor: pointer
+            &.active
+                background-color: rgba($white-color, 1)
+            a
+                color: transparent
+
 .tabs
     align-self: start
     height: calculateRem(34)
@@ -158,10 +178,12 @@ body
                     border-bottom: $white-color calculateRem(3) solid
 
 @media only screen and (max-width: $tablet)
-    .explore, .tabs
+    .explore, .tabs, .switches
         align-self: center
     .stats
         justify-content: center
+    .switches
+        margin-top: 10%
     .tabs
         margin-top: 0
 
@@ -177,7 +199,21 @@ main
     justify-content: space-around
     &.home
         align-items: flex-end
+    &.home, &.crew
         height: 100%
+    &.crew
+        justify-content: flex-start
+        section
+            width: auto
+            article
+                max-width: initial
+                h4
+                    opacity: 0.5
+                    margin-top: 10%
+                h3
+                    margin-bottom: 5%
+                p
+                    max-width: calculateRem(450)
     section
         align-items: center
         display: flex
@@ -195,6 +231,15 @@ main
             .planet
                 max-width: calculateRem(445)
                 width: 40vw
+        &.crewmate
+            align-self: flex-end
+            align-items: flex-start
+            height: 100%
+            margin: 0
+            img
+                height: 100%
+            h5
+                display: none
         article
             align-self: flex-start
             max-width: calculateRem(450)
@@ -220,11 +265,54 @@ main
             article
                 align-self: center
                 text-align: center
+        &.crew
+            justify-content: flex-start
+            section
+                padding: 10%
+                width: 100%
+                h5
+                    align-self: flex-start
+                    margin: 0
+                article
+                    h4
+                        margin-top: 5%
+                    h3
+                        margin-bottom: 2%
+                    p
+                        max-width: initial
+                &.info-card
+                    padding-bottom: 0
+                    padding-top: 0
+                    &.crewmate
+                        align-self: center
+                        align-items: center
+                        margin: 0
+                        padding: 0
     
 @media only screen and (max-width: $mobile)
     main
         section
             padding: 0 10%
+        &.crew
+            flex-direction: column-reverse
+            justify-content: flex-end
+            section
+                &.info-card
+                    flex-direction: column-reverse
+                    margin-top: 0
+                    h5
+                        display: none
+                    &.crewmate
+                        border-bottom: rgba($white-color, 0.2) calculateRem(1) solid
+                        flex-direction: column
+                        height: auto
+                        width: 70%
+                        img
+                            max-height: calculateRem(223)
+                        h5
+                            align-self: center
+                            display: block
+                            margin-bottom: 10%
 
 //// Navbar Styling ////
 nav
