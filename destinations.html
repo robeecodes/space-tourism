@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      body {
+        background-image: url(assets/destination/background-destination-desktop.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      @media only screen and (max-width: 56.25em) {
+        body {
+          background-image: url(assets/destination/background-destination-tablet.jpg);
+        }
+      }
+      @media only screen and (max-width: 40.625em) {
+        body {
+          background-image: url(assets/destination/background-destination-mobile.jpg);
+        }
+      }
+    </style>
+
+    <title>Destinations | Space tourism website</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img src="assets/shared/logo.svg" alt="Space Tourism Logo" />
+        <button class="burger"></button>
+        <ul>
+          <li>
+            <a href="index.html"><strong>00</strong> Home</a>
+          </li>
+          <li>
+            <a href="destinations.html" class="active"
+              ><strong>01</strong> Destination</a
+            >
+          </li>
+          <li>
+            <a href="index.html"><strong>02</strong> Crew</a>
+          </li>
+          <li>
+            <a href="index.html"><strong>03</strong> Technology</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="info-card">
+        <h5><strong>01</strong>Pick your destination</h5>
+        <img class="planet" id="image" src="" alt="" />
+      </section>
+      <section class="info-card">
+        <div class="tabs">
+          <ul>
+            <li><a>Moon</a></li>
+            <li><a>Mars</a></li>
+            <li><a>Europa</a></li>
+            <li><a>Titan</a></li>
+          </ul>
+        </div>
+        <article>
+          <h2 id="name"></h2>
+          <p id="desc" class="body-text"></p>
+          <hr />
+          <div class="stats">
+            <div>
+              <p class="sub2">AVG. DISTANCE</p>
+              <p id="dist" class="sub1"></p>
+            </div>
+            <div>
+              <p class="sub2">Est. travel time</p>
+              <p id="travel" class="sub1"></p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script src="script.js"></script>
+    <script src="destinations.js"></script>
+  </body>
+</html>
