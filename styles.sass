@@ -1,0 +1,187 @@
+//////// INDEX ////////
+
+    //////// IMPORTS ////////
+
+    //////// FUNCTIONS ////////
+        //// Calculate Rem ////
+
+    //////// VARIABLES ////////
+        //// Colours ////
+        //// Fonts ////
+        //// Text-sizing ////
+
+    //////// STYLING ////////
+        //// Body Styling ////
+        //// Main Content Styling ////
+        //// Navbar Styling ////
+        //// Text Styling ////
+            // Init Text //
+            // Body //
+            // Headings //
+            // Nav //
+            // Subheadings //
+
+//////// IMPORTS ////////
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&family=Bellefair&display=swap')
+
+//////// FUNCTIONS ////////
+
+//// Calculate Rem ////
+// Takes pixel value and returns rem value
+@function calculateRem($px)
+  $rem: $px / 16
+  @return #{$rem}rem
+
+
+//////// VARIABLES ////////
+
+//// Colours ////    
+$background-color: #0B0D17
+$blue-color: #D0D6F9
+$white-color: #FFFFFF
+
+//// Fonts ////
+$h-large-font: 'Bellefair', serif
+$h-sub-font: 'Barlow Condensed', sans-serif
+$body-font: 'Barlow', sans-serif
+
+//// Text-sizing ////
+$h1-size: calculateRem(150)
+$h2-size: calculateRem(100)
+$h3-size: calculateRem(56)
+$h4-size: calculateRem(32)
+$h5-size: calculateRem(28)
+$h5-spacing: calculateRem(4.75)
+$sub1-size: calculateRem(28)
+$sub2-size: calculateRem(14)
+$sub2-spacing: calculateRem(2.35)
+$nav-size: calculateRem(16)
+$nav-spacing: calculateRem(2.7)
+$body-size: calculateRem(18)
+
+//////// STYLING ////////
+
+//// Init Styling ////
+*
+    box-sizing: border-box
+
+//// Body Styling ////
+body
+    background-color: $background-color
+    display: flex
+    flex-direction: column
+    height: 100vh
+    max-height: 100%
+    max-width: 100%
+    width: 100vw
+
+//// Main Content Styling ////
+main
+    align-items: flex-end
+    display: flex
+    height: 100%
+    padding: 10%
+    section
+        align-items: center
+        display: flex
+        flex-direction: column
+        width: 50%
+        article
+            max-width: calculateRem(450)
+
+//// Navbar Styling ////
+nav
+    align-items: center
+    display: flex
+    justify-content: space-between
+    margin: calculateRem(40) 0
+    position: relative
+    &::before
+        background-color: rgba($white-color, 0.25)
+        content: ''
+        height: calculateRem(1)
+        left: calculateRem(158)
+        position: absolute
+        top: 50%
+        right: calculateRem(700)
+    img
+        margin: 0 calculateRem(55)
+        height: calculateRem(48)
+        width: calculateRem(48)
+    ul
+        background-color: rgba($white-color, 0.04)
+        display: flex
+        height: calculateRem(96)
+        padding: 0 calculateRem(124)
+        li
+            height: 100%
+            margin: 0 calculateRem(11)
+            opacity: 100%
+            text-align: center
+            a
+                align-items: center
+                border: transparent calculateRem(3) solid
+                display: flex
+                height: 100%
+                text-decoration: none
+                &:hover
+                    border-bottom: rgba($white-color, 0.5) calculateRem(3) solid
+                &.active
+                    border-bottom: $white-color calculateRem(3) solid
+                strong
+                    margin-right: calculateRem(11)
+
+//// Text Styling ////
+
+// Init Text //
+*
+    line-height: 1.5
+    color: $white-color
+    text-transform: uppercase
+
+h1, h2, h3, h4, .sub1
+    font-family: $h-large-font
+
+h5, .sub2, nav
+    font-family: $h-sub-font
+    font-weight: 400
+
+strong
+    font-weight: 700
+
+// Body //
+.body-text
+    font-family: $body-font
+    font-size: $body-size
+    text-transform: initial
+
+// Headings //
+h1
+    font-size: $h1-size
+
+h2
+    font-size: $h2-size
+
+h3
+    font-size: $h3-size
+
+h4
+    font-size: $h4-size
+
+h5
+    color: $blue-color
+    letter-spacing: $h5-spacing
+    font-size: $h5-size
+
+// Nav //
+nav
+    letter-spacing: $nav-spacing
+    font-size: $nav-size
+
+// Subheadings //
+.sub1
+    font-size: $sub1-size
+
+.sub2
+    letter-spacing: $sub2-spacing
+    font-size: $sub2-size
